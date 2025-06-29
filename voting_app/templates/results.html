@@ -1,0 +1,81 @@
+{% comment %} <h2>Voting Results</h2>
+<ul>
+    {% for candidate in candidates %}
+        <li>{{ candidate.name }} - {{ candidate.total_votes }} votes</li>
+    {% endfor %}
+</ul> {% endcomment %}
+<h2>Voting Results</h2>
+
+<!-- Add CSS inside the style tag -->
+<style>
+    /* Container for the results */
+    .results-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for the results list */
+    .results-list {
+        list-style-type: none;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Styling for each result item */
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s;
+    }
+
+    /* Hover effect for each result item */
+    .result-item:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Styling for the candidate name */
+    .candidate-name {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Styling for the vote count */
+    .vote-count {
+        font-size: 1em;
+        color: #007bff;
+    }
+
+    /* Add some space between the heading and the list */
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+    }
+</style>
+
+<div class="results-container">
+    <ul class="results-list">
+        {% for candidate in candidates %}
+            <li class="result-item">
+                <div class="candidate-info">
+                    <span class="candidate-name">{{ candidate.name }}</span>
+                    <span class="vote-count">{{ candidate.total_votes }} votes</span>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

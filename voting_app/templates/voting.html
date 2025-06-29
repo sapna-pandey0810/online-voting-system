@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .candidate-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between columns */
+            margin-bottom: 20px; /* Space between rows */
+        }
+
+        .candidate {
+            text-align: center;
+        }
+
+        .candidate img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ccc;
+        }
+
+        .candidate input {
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Vote for Your Candidate</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="candidate-row">
+                <div class="candidate">
+                    <img src="{% static 'images/yogesh.jpeg' %}" alt="Yogesh">
+                    <p>
+                        <input type="radio" name="candidate" value="yogesh" id="yogesh" required>
+                        <label for="yogesh">Yogesh</label>
+                    </p>
+                </div>
+                <div class="candidate">
+                    <img src="{% static 'images/varsha.jpeg' %}" alt="Varsha">
+                    <p>
+                        <input type="radio" name="candidate" value="varsha" id="varsha">
+                        <label for="varsha">Varsha</label>
+                    </p>
+                </div>
+                <div class="candidate">
+                    <img src="{% static 'images/neeru.jpeg' %}" alt="Neeru">
+                    <p>
+                        <input type="radio" name="candidate" value="neeru" id="neeru">
+                        <label for="neeru">Neeru</label>
+                    </p>
+                </div>
+            </div>
+            <button type="submit">Submit Vote</button>
+            <p>Confirmation of your vote :- </p>
+            {{ form.as_p }}
+        </form>
+    </div>
+</body>
+</html>
+

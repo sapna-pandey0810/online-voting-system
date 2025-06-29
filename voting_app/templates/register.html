@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .box {
+            border: 2px solid black;
+            height: 500px;
+            width: 55%;
+            background-color: white;
+            padding: 20px;
+            margin: auto;
+        }
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px; /* Space between input fields */
+        }
+        .register-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .register-form input {
+            width: 95%; /* Makes inputs fit inside the box */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Ensures padding doesn't exceed the box width */
+        }
+        .btn-submit {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background-color: darkblue;
+        }
+        p {
+            margin: 0;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="box">
+        <h2>Register</h2>
+        <form method="POST" class="register-form">
+            {% csrf_token %}
+            <p>
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+            </p>
+            <p>
+                <label for="id_email">Email:</label>
+                {{ form.email }}
+            </p>
+            <p>
+                <label for="id_password">Password:</label>
+                {{ form.password }}
+            </p>
+            <button type="submit" class="btn-submit">Register</button>
+        </form>    
+        <p>Already have an account? <a href="{% url 'login' %}" class="link">Login here</a></p>
+    </div>
+</body>
+</html>
